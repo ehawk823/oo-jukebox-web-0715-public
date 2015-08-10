@@ -27,6 +27,18 @@ class Jukebox
   end
 
   def call
+    @input = gets.chomp
+    case
+    when @input == 'help'
+      help
+    when @input == 'list'
+      list
+    when @input == 'play'
+      play
+    when @input.start_with?("play ")
+      selection = @input.gsub('play ', "")
+      play(selection)
+    end
   end
 
   def play (input = SONGS[0])
